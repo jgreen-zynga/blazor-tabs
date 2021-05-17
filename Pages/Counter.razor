@@ -1,0 +1,33 @@
+@page "/"
+
+
+<AsyncWorkComponent>
+    Top Content i: @context
+    <WithChildContentComponent>
+        <WithChildContentComponent>
+            Nested Content i: @context
+        </WithChildContentComponent>
+    </WithChildContentComponent>
+</AsyncWorkComponent>
+<hr>
+<AsyncWorkComponent>
+    Top Content i: @context
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="@("Test Tab " + context)">
+                TabItem Content i: @context
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+</AsyncWorkComponent>
+<hr>
+<AsyncWorkComponent>
+    Top Content i: @context
+    <ParentComponent>
+        <ParentRender>
+            <ChildComponent Text="@("Test Child " + context)">
+                Child Content i: @context
+            </ChildComponent>
+        </ParentRender>
+    </ParentComponent>
+</AsyncWorkComponent>

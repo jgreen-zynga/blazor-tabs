@@ -1,0 +1,21 @@
+<div>ChildComponent @Text</div>
+@code {
+
+    [CascadingParameter]
+    public ParentComponent Parent { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Text { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("ChildComponent.OnParametersSet()");
+        this.Parent.Children.Add(this);
+    }
+
+}
+
+
+
+

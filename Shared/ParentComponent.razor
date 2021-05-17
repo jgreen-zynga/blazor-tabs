@@ -1,0 +1,15 @@
+<div>ParentComponent</div>
+<CascadingValue Value="this">
+    @ParentRender
+</CascadingValue>
+@if (Children.Any())
+{
+    @Children.First().ChildContent
+}
+@code {
+
+    [Parameter] public RenderFragment ParentRender { get; set; }
+    
+    public HashSet<ChildComponent> Children { get; } = new();
+
+}

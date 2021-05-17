@@ -1,0 +1,32 @@
+<div>Async I: @i
+@if (ChildContent != null)
+{
+    @ChildContent(i)
+}
+</div>
+@code {
+    int i;
+
+    [Parameter]
+    public RenderFragment<int> ChildContent { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(3));
+        i = 1;
+        Loop();
+    }
+
+    async void Loop()
+    {
+        while (i < 4)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(3));
+            i++;
+            Console.WriteLine($"Async Loop {i}");
+            StateHasChanged();
+        }
+    }
+    
+
+}
